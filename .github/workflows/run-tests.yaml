@@ -1,0 +1,17 @@
+name: Run Tests
+on: push
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node Js v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Get Code From Git Repository
+        uses: actions/checkout@v3
+      - name: Install Dependencies / Third party packages
+        run: npm ci
+      - name: Run Tests
+        run: npm test
+        
