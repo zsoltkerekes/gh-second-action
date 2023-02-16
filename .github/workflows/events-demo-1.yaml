@@ -4,11 +4,17 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main
   push:
     branches: 
       - master
+      - 'feature/*'  # feature/new-feat-new-button 
+      - 'feature/**' # feature/new feat/new button
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
-  deploy:
+  Events-Demo-1:
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
