@@ -7,6 +7,11 @@ jobs:
   Run-Test:
     runs-on: ubuntu-latest
     steps:
+      - name: Applying Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/**
+          key: testing-cache-${{ hashFiles('**/*.*') }}
       - name: Get Code
         uses: actions/checkout@v3
       - name: Install Dependencies
@@ -20,6 +25,11 @@ jobs:
     outputs:
       script-file-name: ${{ steps.publish-name.outputs.script-file-name }}
     steps:
+      - name: Applying Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/**
+          key: testing-cache-${{ hashFiles('**/*.*') }}
       - name: Get Code
         uses: actions/checkout@v3
       - name: Install Dependencies
@@ -39,6 +49,11 @@ jobs:
     needs: Build-Website
     runs-on: ubuntu-latest
     steps:
+      - name: Applying Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/**
+          key: testing-cache-${{ hashFiles('**/*.*') }}
       - name: Download Artifacts
         uses: actions/download-artifact@v3
         with:
